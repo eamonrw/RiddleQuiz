@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Riddle Quiz</string>
+    <string name="answer_text">Enter your answer here.</string>
+    <string name="submit_text">Submit</string>
+    <string name="timer_text">Time left: 100</string>
+    <string name="begin_text">Begin quiz by clicking start.</string>
+    <string name="start_text">Start</string>
+    <string name="reset_text">Reset</string>
+    <string name="finished_text">Finished Game.</string>
+    <string-array name="questions">
+        <item>How many months have 28 days?</item>
+        <item>What is full of holes but still holds water?</item>
+        <item>What has many keys but can’t open a single lock?</item>
+        <item>What belongs to you, but other people use it more than you do?</item>
+        <item>What is tall when it is young and short when it is old?</item>
+    </string-array>
+    <string-array name="answers">
+        <item>12</item>
+        <item>sponge</item>
+        <item>piano</item>
+        <item>name</item>
+        <item>candle</item>
+    </string-array>
+</resources>
