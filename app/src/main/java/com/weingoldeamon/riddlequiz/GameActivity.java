@@ -1,7 +1,5 @@
 package com.weingoldeamon.riddlequiz;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -9,15 +7,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
-public class GameActivity extends Activity {
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+public class GameActivity extends AppCompatActivity {
+
+    Toolbar toolb;
     TextView questionText, timerText;
     EditText answerField;
-    int currentQuestion = 0;
+    int curQ = 0, numQ = -1;
     int quizTime = 60;
-    String[] questionArray, answerArray;
+    String[] qArray;
     Resources res;
     Button submitButton;
     CountDownTimer quizTimer;
@@ -27,15 +28,18 @@ public class GameActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        toolb = findViewById(R.id.toolbar);
+        setSupportActionBar(toolb);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         res = getResources();
         questionText = findViewById(R.id.question_box);
         timerText = findViewById(R.id.timer_box);
         answerField = findViewById(R.id.answer_field);
         submitButton = findViewById(R.id.submit_button);
-        questionArray = res.getStringArray(R.array.questions);
-        answerArray = res.getStringArray(R.array.answers);
+        qArray = res.getStringArray(R.array.questions);
+        numQ = qArray.length;
 
-        questionText.setText(questionArray[currentQuestion]);
+        questionText.setText(qArray[curQ].substring(0, qArray[curQ].indexOf('?')+1));
         quizTimer = new CountDownTimer(quizTime*1000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -50,13 +54,13 @@ public class GameActivity extends Activity {
     }
 
     public void submitAnswer(View view) {
-        if(currentQuestion<5) {
+        if(curQ < numQ) {
             String answer = answerField.getText().toString();
-            if(answer.toLowerCase().contains(answerArray[currentQuestion])) {
-                currentQuestion++;
+            if(answer.toLowerCase().contains(qArray[curQ].substring(qArray[curQ].indexOf('?')+1))) {
+                curQ++;
                 answerField.setText("");
-                if(currentQuestion<5)
-                    questionText.setText(questionArray[currentQuestion]);
+                if(curQ < numQ)
+                    questionText.setText(qArray[curQ].substring(0, qArray[curQ].indexOf('?')+1));
                 else {
                     questionText.setText(res.getString(R.string.finished_text));
                     submitButton.setClickable(false);
@@ -67,14 +71,9 @@ public class GameActivity extends Activity {
     }
 
     public void resetQuiz(View view) {
-        currentQuestion = 0;
-        questionText.setText(questionArray[currentQuestion]);
+        curQ = 0;
+        questionText.setText(qArray[curQ].substring(0, qArray[curQ].indexOf('?')+1));
         submitButton.setClickable(true);
         quizTimer.start();
-    }
-
-    public void goBack(View view) {
-        Intent game = new Intent(this, MainActivity.class);
-        startActivity(game);
     }
 }

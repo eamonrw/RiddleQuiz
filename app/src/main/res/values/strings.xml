@@ -9,17 +9,10 @@
     <string name="finished_text">Finished!</string>
     <string name="back_text">Back</string>
     <string-array name="questions">
-        <item>How many months have 28 days?</item>
-        <item>What is full of holes but still holds water?</item>
-        <item>What has many keys but can’t open a single lock?</item>
-        <item>What belongs to you, but other people use it more than you do?</item>
-        <item>What is tall when it is young and short when it is old?</item>
-    </string-array>
-    <string-array name="answers">
-        <item>12</item>
-        <item>sponge</item>
-        <item>piano</item>
-        <item>name</item>
-        <item>candle</item>
+        <item>How many months have 28 days?12</item>
+        <item>What is full of holes but still holds water?sponge</item>
+        <item>What has many keys but can’t open a single lock?piano</item>
+        <item>What belongs to you, but other people use it more than you do?name</item>
+        <item>What is tall when it is young and short when it is old?candle</item>
     </string-array>
 </resources>
