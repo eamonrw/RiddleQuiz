@@ -24,4 +24,13 @@ public class MainActivity extends AppCompatActivity {
         Intent game = new Intent(this, GameActivity.class);
         startActivity(game);
     }
+
+    public void openSettings(View view) {
+        Intent settings = new Intent(this, SettingsActivity.class);
+        startActivity(settings);
+    }
+
+    public void quitApp(View view) {
+        finishAndRemoveTask();
+    }
 }

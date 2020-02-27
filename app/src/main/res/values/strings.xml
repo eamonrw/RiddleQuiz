@@ -8,6 +8,9 @@
     <string name="reset_text">Restart</string>
     <string name="finished_text">Finished!</string>
     <string name="back_text">Back</string>
+    <string name="settings_text">Settings</string>
+    <string name="quit_text">Quit</string>
+    <string name="welcome_text">Welcome to Riddle Quiz! Press Start to begin.</string>
     <string-array name="questions">
         <item>How many months have 28 days?12</item>
         <item>What is full of holes but still holds water?sponge</item>
