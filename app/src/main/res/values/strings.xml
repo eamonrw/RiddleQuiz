@@ -10,12 +10,23 @@
     <string name="back_text">Back</string>
     <string name="settings_text">Settings</string>
     <string name="quit_text">Quit</string>
-    <string name="welcome_text">Welcome to Riddle Quiz! Press Start to begin.</string>
+    <string name="welcome_text">Welcome to Riddle Quiz! Answer all of the questions before time runs out.</string>
+    <string name="timer_length_text">Timer Length</string>
+    <string name="color_theme_text">Color Theme</string>
+    <string name="seconds_30">30 Seconds</string>
+    <string name="seconds_60">60 Seconds</string>
     <string-array name="questions">
         <item>How many months have 28 days?12</item>
         <item>What is full of holes but still holds water?sponge</item>
         <item>What has many keys but can’t open a single lock?piano</item>
         <item>What belongs to you, but other people use it more than you do?name</item>
         <item>What is tall when it is young and short when it is old?candle</item>
+    </string-array>
+    <string-array name="color_themes">
+        <item>Blue</item>
+        <item>Red</item>
+        <item>Green</item>
+        <item>Pink</item>
+        <item>Dark</item>
     </string-array>
 </resources>
