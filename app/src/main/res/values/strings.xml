@@ -24,9 +24,9 @@
     </string-array>
     <string-array name="color_themes">
         <item>Blue</item>
-        <item>Red</item>
-        <item>Green</item>
-        <item>Pink</item>
         <item>Dark</item>
+        <!--<item>Red</item>
+        <item>Green</item>
+        <item>Pink</item>-->
     </string-array>
 </resources>

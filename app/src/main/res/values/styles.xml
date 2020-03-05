@@ -1,12 +1,30 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="BlueTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="colorButtonNormal">@color/colorButton</item>
+        <item name="colorPrimary">@color/bluePrimary</item>
+        <item name="colorPrimaryDark">@color/bluePrimaryDark</item>
+        <item name="colorAccent">@color/blueAccent</item>
+        <item name="colorButtonNormal">@color/blueButton</item>
+        <item name="android:windowBackground">@color/blueBackground</item>
     </style>
+
+    <style name="DarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/darkPrimary</item>
+        <item name="colorPrimaryDark">@color/darkPrimaryDark</item>
+        <item name="colorAccent">@color/darkAccent</item>
+        <item name="colorButtonNormal">@color/darkButton</item>
+        <item name="android:windowBackground">@color/darkBackground</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColorHint">#C0C0C0</item>
+        <item name="android:editTextColor">#FFFFFF</item>
+<!--        <item name="spinnerStyle">@style/darkSpinner</item>-->
+    </style>
+
+<!--    <style name="darkSpinner">
+        <item name="android:popupBackground">@color/darkButton</item>
+    </style>-->
 
 </resources>
