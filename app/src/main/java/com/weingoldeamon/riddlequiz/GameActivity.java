@@ -1,5 +1,7 @@
 package com.weingoldeamon.riddlequiz;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -24,9 +26,14 @@ public class GameActivity extends AppCompatActivity {
     Button submitButton;
     CountDownTimer quizTimer;
     ProgressBar timerBar;
+    SharedPreferences pref;
+    int[] colorThemes = new int[]{R.style.BlueTheme, R.style.DarkTheme};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        pref = getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        setTheme(colorThemes[pref.getInt("Theme", 0)]);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 

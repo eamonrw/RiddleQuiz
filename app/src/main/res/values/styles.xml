@@ -20,11 +20,10 @@
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:textColorHint">#C0C0C0</item>
         <item name="android:editTextColor">#FFFFFF</item>
-<!--        <item name="spinnerStyle">@style/darkSpinner</item>-->
     </style>
 
-<!--    <style name="darkSpinner">
-        <item name="android:popupBackground">@color/darkButton</item>
-    </style>-->
+    <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColor">@color/darkAccent</item>
+    </style>
 
 </resources>
