@@ -26,7 +26,7 @@
             </item>
             <item android:gravity="center" android:right="40dp">
                 <shape android:shape="rectangle">
-                    <size android:width="2dp" android:height="25dp" />
+                    <size android:width="1.5dp" android:height="25dp" />
                     <solid android:color="#000000" />
                 </shape>
             </item>
