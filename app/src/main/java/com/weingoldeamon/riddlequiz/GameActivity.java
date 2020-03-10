@@ -20,19 +20,20 @@ public class GameActivity extends AppCompatActivity {
     TextView questionText;
     EditText answerField;
     int curQ = 0, numQ = -1;
-    int quizTime = 60;
+    int quizTime;
     String[] qArray;
     Resources res;
     Button submitButton;
     CountDownTimer quizTimer;
     ProgressBar timerBar;
     SharedPreferences pref;
-    int[] colorThemes = new int[]{R.style.BlueTheme, R.style.DarkTheme};
+    int[] colorThemes = new int[]{R.style.BlueTheme, R.style.DarkTheme, R.style.RedTheme, R.style.GreenTheme};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         pref = getSharedPreferences("Settings", Context.MODE_PRIVATE);
         setTheme(colorThemes[pref.getInt("Theme", 0)]);
+        quizTime = pref.getInt("Timer Length", 60);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
@@ -49,6 +50,7 @@ public class GameActivity extends AppCompatActivity {
         numQ = qArray.length;
 
         questionText.setText(qArray[curQ].substring(0, qArray[curQ].indexOf('?')+1));
+        timerBar.setMax(quizTime*1000);
         quizTimer = new CountDownTimer(quizTime*1000, 1) {
             @Override
             public void onTick(long millisUntilFinished) {

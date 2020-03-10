@@ -27,7 +27,7 @@ public class SettingsActivity extends AppCompatActivity {
     Spinner colorSpinner;
     SeekBar timerBar;
     SharedPreferences pref;
-    int[] colorThemes = new int[]{R.style.BlueTheme, R.style.DarkTheme};
+    int[] colorThemes = new int[]{R.style.BlueTheme, R.style.DarkTheme, R.style.RedTheme, R.style.GreenTheme};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,7 @@ public class SettingsActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item);
         colorSpinner.setAdapter(adapter);
         timerBar = findViewById(R.id.seekBar);
+        timerBar.setProgress(pref.getInt("Timer Length", 60) - 30);
         timerBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -60,6 +61,7 @@ public class SettingsActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
             }
         });
+        colorSpinner.setSelection(pref.getInt("Theme", 0));
         colorSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int pos, long id) {
@@ -67,18 +69,10 @@ public class SettingsActivity extends AppCompatActivity {
                     SharedPreferences.Editor edit = pref.edit();
                     edit.putInt("Theme", pos);
                     edit.apply();
-                    new AlertDialog.Builder(SettingsActivity.this, R.style.AlertDialogCustom)
-                    .setMessage("Restart App to Change Theme?")
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            startActivity(new Intent(SettingsActivity.this, MainActivity.class));
-                        }
-                    })
-                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                        }
-                    })
-                    .show();
+                    Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
                 }
             }
             public void onNothingSelected(AdapterView<?> parent) {

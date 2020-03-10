@@ -11,4 +11,16 @@
     <color name="darkAccent">#D81B60</color>
     <color name="darkBackground">#525252</color>
     <color name="darkButton">#414141</color>
+
+    <color name="greenPrimary">#37B800</color>
+    <color name="greenPrimaryDark">#379900</color>
+    <color name="greenAccent">#D81B60</color>
+    <color name="greenBackground">#D0FFBF</color>
+    <color name="greenButton">#7BFF64</color>
+
+    <color name="redPrimary">#B80000</color>
+    <color name="redPrimaryDark">#990000</color>
+    <color name="redAccent">#D81B60</color>
+    <color name="redBackground">#FFBFBF</color>
+    <color name="redButton">#FF6464</color>
 </resources>
