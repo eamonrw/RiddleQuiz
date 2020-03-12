@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 class QuitDialog extends DialogFragment {
 
     private AlertDialog.Builder db;
-    AppCompatActivity mActivity;
+    private AppCompatActivity mActivity;
     public QuitDialog(AppCompatActivity activity, Context context, String message) {
         mActivity = activity;
         db = new AlertDialog.Builder(context, R.style.AlertDialogCustom)

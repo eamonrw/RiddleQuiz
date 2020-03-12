@@ -15,12 +15,25 @@
     <string name="color_theme_text">Color Theme</string>
     <string name="seconds_30">30 Seconds</string>
     <string name="seconds_60">60 Seconds</string>
+    <string name="number_of_questions">Number of Questions</string>
+    <string name="_6_questions">6 questions</string>
+    <string name="_14_questions">14 questions</string>
+    <string name="times_up">Time\'s up!</string>
     <string-array name="questions">
         <item>How many months have 28 days?12</item>
         <item>What is full of holes but still holds water?sponge</item>
         <item>What has many keys but can’t open a single lock?piano</item>
         <item>What belongs to you, but other people use it more than you do?name</item>
         <item>What is tall when it is young and short when it is old?candle</item>
+        <item>What is always in front of you but can’t be seen?future</item>
+        <item>What goes up but never comes down?age</item>
+        <item>What gets wet while drying?towel</item>
+        <item>David’s parents have three sons: Snap, Crackle, and what’s the name of the third son?david</item>
+        <item>Where does today come before yesterday?dictionary</item>
+        <item>What has a thumb and four fingers, but is not a hand?glove</item>
+        <item>What building has the most stories?library</item>
+        <item>What has four wheels and flies?garbage truck</item>
+        <item>If there are 3 apples and you take away 2, how many apples do you have?2</item>
     </string-array>
     <string-array name="color_themes">
         <item>Blue</item>

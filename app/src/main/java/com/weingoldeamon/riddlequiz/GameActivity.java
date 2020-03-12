@@ -14,12 +14,16 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.gson.Gson;
+
 public class GameActivity extends AppCompatActivity {
 
+    Gson gson;
+    CurrentSettings cs;
     Toolbar toolb;
     TextView questionText;
     EditText answerField;
-    int curQ = 0, numQ = -1;
+    int curQ = 0, numQ = 6;
     int quizTime;
     String[] qArray;
     Resources res;
@@ -33,7 +37,10 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         pref = getSharedPreferences("Settings", Context.MODE_PRIVATE);
         setTheme(colorThemes[pref.getInt("Theme", 0)]);
-        quizTime = pref.getInt("Timer Length", 60);
+        gson = new Gson();
+        cs = gson.fromJson(pref.getString("Current Settings", "{\"timer_length\":60,\"num_questions\":6}"), CurrentSettings.class);
+        quizTime = cs.getTimer_length();
+        numQ = cs.getNum_questions();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
@@ -47,7 +54,6 @@ public class GameActivity extends AppCompatActivity {
         submitButton = findViewById(R.id.submit_button);
         qArray = res.getStringArray(R.array.questions);
         timerBar = findViewById(R.id.progressBar);
-        numQ = qArray.length;
 
         questionText.setText(qArray[curQ].substring(0, qArray[curQ].indexOf('?')+1));
         timerBar.setMax(quizTime*1000);
@@ -58,7 +64,7 @@ public class GameActivity extends AppCompatActivity {
             }
             @Override
             public void onFinish() {
-                questionText.setText("Time's up!");
+                questionText.setText(res.getString(R.string.times_up));
                 submitButton.setClickable(false);
                 timerBar.setProgress(0);
             }

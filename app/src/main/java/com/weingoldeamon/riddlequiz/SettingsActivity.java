@@ -21,11 +21,15 @@ import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 
+import com.google.gson.Gson;
+
 public class SettingsActivity extends AppCompatActivity {
 
+    Gson gson;
+    CurrentSettings cs;
     Toolbar toolb;
     Spinner colorSpinner;
-    SeekBar timerBar;
+    SeekBar timerBar, qBar;
     SharedPreferences pref;
     int[] colorThemes = new int[]{R.style.BlueTheme, R.style.DarkTheme, R.style.RedTheme, R.style.GreenTheme};
 
@@ -38,6 +42,8 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        gson = new Gson();
+        cs = gson.fromJson(pref.getString("Current Settings", "{\"timer_length\":60,\"num_questions\":6}"), CurrentSettings.class);
         toolb = findViewById(R.id.toolbar);
         setSupportActionBar(toolb);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -46,13 +52,25 @@ public class SettingsActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item);
         colorSpinner.setAdapter(adapter);
         timerBar = findViewById(R.id.seekBar);
-        timerBar.setProgress(pref.getInt("Timer Length", 60) - 30);
+        timerBar.setProgress(cs.getTimer_length() - 30);
         timerBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                SharedPreferences.Editor edit = pref.edit();
-                edit.putInt("Timer Length", progress+30);
-                edit.apply();
+                cs.setTimer_length(progress + 30);
+            }
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+        qBar = findViewById(R.id.seekBar2);
+        qBar.setProgress(cs.getNum_questions()-6);
+        qBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                cs.setNum_questions(progress+6);
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -78,5 +96,37 @@ public class SettingsActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+    }
+
+    @Override
+    public void onPause() {
+        SharedPreferences.Editor edit = pref.edit();
+        edit.putString("Current Settings", gson.toJson(cs));
+        edit.apply();
+        super.onPause();
+    }
+}
+
+class CurrentSettings {
+    private int timer_length = 60;
+    private int num_questions = 6;
+    public CurrentSettings() {
+
+    }
+
+    public int getNum_questions() {
+        return num_questions;
+    }
+
+    public void setNum_questions(int num_questions) {
+        this.num_questions = num_questions;
+    }
+
+    public int getTimer_length() {
+        return timer_length;
+    }
+
+    public void setTimer_length(int timer_length) {
+        this.timer_length = timer_length;
     }
 }
